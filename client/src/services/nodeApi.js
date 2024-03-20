@@ -10,7 +10,7 @@ const nodeApi = createApi({
     getUser: build.query({
       query: () => ({
         method: "GET",
-        url: /auth/get,
+        url: "/auth/get",
       }),
       providesTags: ["User"],
       onQueryStarted: async (args, { dispatch, queryFulfilled }) => {
@@ -18,15 +18,13 @@ const nodeApi = createApi({
           const response = await queryFulfilled;
           dispatch(setUser(response.data.user));
         } catch (error) {
-            // toast.error(error.error.data ? error.error.data.msg : config.ERROR);
+          // toast.error(error.error.data ? error.error.data.msg : config.ERROR);
         }
       },
     }),
-}),
+  }),
 });
 
-export const {
-  useGetUserQuery,
-} = nodeApi;
+export const { useGetUserQuery } = nodeApi;
 
-export default nodeApi
+export default nodeApi;
