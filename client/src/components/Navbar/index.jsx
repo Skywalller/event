@@ -1,4 +1,5 @@
 import React from "react";
+import { Input, Button } from "@material-tailwind/react";
 
 const Navbar = () => {
   return (
@@ -18,9 +19,19 @@ const Navbar = () => {
           <div className='text-black hover:text-primary transition-colors cursor-pointer'>
             Contact
           </div>
-          <button className='rounded-sm bg-primary text-white px-3.5 py-1.5 transition-transform active:scale-90'>
+          <Button color='blue' variant='outlined'>
             Login
-          </button>
+          </Button>
+          <div className='w-72'>
+            <div className='w-72'>
+              <Input
+                placeholder='Enter Name'
+                color='blue'
+                variant='static'
+                className='border-primary'
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

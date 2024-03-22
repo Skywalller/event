@@ -18,7 +18,7 @@ const UpcomingEvents = () => {
           </button>
         </div>
 
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-y-8'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-4'>
           <EventCard />
           <EventCard />
           <EventCard />
@@ -35,7 +35,7 @@ export default UpcomingEvents;
 
 const EventCard = () => {
   return (
-    <div className='h-[390px] w-[380px] rounded-xl shadow-md overflow-hidden flex flex-col mx-auto bg-white'>
+    <div className='h-[390px] max-w-[380px] rounded-xl shadow-md hover:scale-[1.02] hover:shadow-xl transition-[shadow_translate] overflow-hidden flex flex-col mx-auto bg-white'>
       <div className='w-full h-[200px]'>
         <img
           src={SportImage}

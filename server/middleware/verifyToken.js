@@ -9,7 +9,7 @@ const verifyToken = async (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, config.TOKEN || process.env.TOKEN);
-    req.user = decoded.user;
+    req.user = decoded._id;
     next();
   } catch (err) {
     return res.status(401).json({ message: "Unauthorized Request" });
