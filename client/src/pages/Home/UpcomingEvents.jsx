@@ -5,6 +5,11 @@ import EntertainmentImage from "@/assets/images/entertainment.png";
 import TechnologyImage from "@/assets/images/technology.png";
 import SportImage from "@/assets/images/sport.png";
 import TravelImage from "@/assets/images/travel.png";
+import config from "../../config/config";
+import { ReactComponent as LocationIcon } from "@/assets/icons/location.svg";
+import { ReactComponent as ArrowUpRight } from "@/assets/icons/upRight.svg";
+import getAmount from "../../utils/getAmount";
+import { Button } from "@material-tailwind/react";
 
 const UpcomingEvents = () => {
   return (
@@ -18,13 +23,10 @@ const UpcomingEvents = () => {
           </button>
         </div>
 
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-4'>
-          <EventCard />
-          <EventCard />
-          <EventCard />
-          <EventCard />
-          <EventCard />
-          <EventCard />
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-2'>
+          {config.seed.events.map((event, index) => {
+            return <EventCard event={event} key={index} />;
+          })}
         </div>
       </div>
     </div>
@@ -33,32 +35,42 @@ const UpcomingEvents = () => {
 
 export default UpcomingEvents;
 
-const EventCard = () => {
+const EventCard = ({ event }) => {
   return (
-    <div className='h-[390px] max-w-[380px] rounded-xl shadow-md hover:scale-[1.02] hover:shadow-xl transition-[shadow_translate] overflow-hidden flex flex-col mx-auto bg-white'>
-      <div className='w-full h-[200px]'>
-        <img
-          src={SportImage}
-          alt='ent-image'
-          className='w-full h-full object-cover object-center'
-        />
-        <div className='flex gap-4 items-start p-3'>
-          <div className='flex-col font-semibold'>
-            <div className='uppercase text-sm text-primary'>APR</div>
-            <div className='text-2xl leading-5'>24</div>
+    <div className='cursor-pointer group relative h-[500px] max-w-[380px] shadow-md hover:scale-[1.01] hover:shadow-xl transition-[shadow_translate] overflow-hidden flex flex-col mx-auto bg-white'>
+      <div
+        className={`w-full h-full absolute translate-y-full group-hover:-translate-y-0 transition-[transition_color] duration-200`}
+      >
+        <div className='w-full h-full relative flex items-end justify-center'>
+          <img src={event.img} alt='' className='w-full h-full object-center object-cover' />
+          <div className='flex items-center absolute gap-1 bg-black/40 rounded-lg px-2 mb-4'>
+            <div className='text-white'>View Details</div>
+            <ArrowUpRight className='stroke-white size-8' />
           </div>
-          <div className='flex flex-col overflow-hidden gap-1.5'>
-            <div className='font-semibold leading-5 line-clamp-2'>
-              Wonder Girls 2010 Wonder Girls World Tour San Francisco
-            </div>
-            <div className='text-xs font-light text-black/80 line-clamp-2'>
-              We’ll get you directly seated and inside for you to enjoy the show.
-            </div>
-            <div className='text-xs font-light text-black'>7:00 AM - 9:00 AM</div>
-            <div className='text-xs font-light text-success flex items-center gap-1.5'>
-              <TicketIcon />
-              <div>QR 1900</div>
-            </div>
+        </div>
+      </div>
+      <div className='h-[300px] w-full'>
+        <img
+          src={event.img}
+          alt='ent-image'
+          className='w-full h-full object-cover object-top -z-0'
+        />
+      </div>
+      <div className='flex flex-1 gap-4 items-start p-3'>
+        <div className='flex-col font-semibold'>
+          <div className='uppercase text-sm text-primary'>{event.date.from.split(" ")[1]}</div>
+          <div className='text-2xl leading-5'>{event.date.from.split(" ")[0]}</div>
+        </div>
+        <div className='flex flex-col overflow-hidden gap-1.5'>
+          <div className='font-semibold leading-5 line-clamp-2'>{event.name}</div>
+          <div className='text-xs font-light text-black/80 line-clamp-2'>{event.description}</div>
+          <div className='text-xs font-light text-black flex items-center gap-1 leading-none'>
+            <LocationIcon className='stroke-black/70' />
+            <span>{event.location}</span>
+          </div>
+          <div className='text-xs font-light text-success flex items-center gap-1.5'>
+            <TicketIcon />
+            <div>{getAmount(event.price)}</div>
           </div>
         </div>
       </div>

@@ -4,8 +4,6 @@ import BgImage from "@/assets/bg/bg1.png";
 import { ReactComponent as SearchIcon } from "@/assets/icons/search.svg";
 import { ReactComponent as CalenderIcon } from "@/assets/icons/calender.svg";
 import UpcomingEvents from "./UpcomingEvents";
-import ExploreCategories from "./ExploreCategories";
-import HotOffers from "./HotOffers";
 import OwnEvent from "./OwnEvent";
 import TrendingEvents from "./TrendingEvents";
 import Footer from "../../components/Footer";
@@ -52,8 +50,6 @@ const Home = () => {
         </div>
         <div className='flex flex-col gap-14 mt-14 container mx-auto max-w-screen-xl'>
           <UpcomingEvents />
-          <ExploreCategories />
-          <HotOffers />
         </div>
         <div className='mt-20'></div>
         <OwnEvent />

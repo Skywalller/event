@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className='bg-primary w-screen'>
+    <div className='bg-primary_dark w-screen'>
       <div className='container mx-auto max-w-screen-xl w-full'>
         <div className='flex flex-col gap-5'>
           <div className='h-full w-full py-8 grid lg:grid-cols-3 gap-10'>

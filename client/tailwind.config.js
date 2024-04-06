@@ -13,7 +13,7 @@ export default withMT({
           500: "#4F4CEE",
         },
         primary: "#4F4CEE",
-        // primary: "#0A075F",
+        primary_dark: "#0A075F",
         // primary: "#3D37F1",
         success: "#16a34a",
       },
